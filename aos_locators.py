@@ -1,28 +1,39 @@
 from faker import Faker
+
 fake = Faker(locale='en_CA')
 
-#------------------ %&%-------------------------------
+# ------------------ %&%-------------------------------
 
 aos_url = 'https://advantageonlineshopping.com/#/'
-aos_home_page_title = ' Advantage Shopping'
-
+aos_home_page_title = '\xa0Advantage Shopping'
 
 # -------------------- data section ---------------------------------
-new_username = 'Re'+fake.last_name()
+new_username = 'Re' + fake.last_name()
 new_password = fake.password()
 new_email = fake.email()
-print(new_username, new_password,new_email)
+print(new_username, new_password, new_email)
 first_name = fake.first_name()
 last_name = fake.last_name()
 phone = fake.phone_number()
 country = fake.current_country()
 city = fake.city()
-address = fake.address().replace("\n"," ")
+address = fake.address().replace("\n", " ")
 province = fake.province()
 postalcode = fake.postcode()
 
-#------------------ %&%-------------------------------
+# Print list of varaiables
+
+# print(list_val)
+homepage_texts = ['SPEAKER', 'TABLES', 'LAPTOPS', 'MICE', 'HEADPHONES']
+homepage_textid = ['speakersTxt', 'tabletsTxt', 'laptopsTxt', 'miceTxt', 'headphonesTxt']
+homepage_menu = ['SPECIAL OFFER', 'POPULAR ITEMS', 'CONTACT US']
+fb_page_url = 'https://www.facebook.com/MicroFocus/'
+tw_page_url = 'https://twitter.com/MicroFocus'
+in_page_url = 'https://www.linkedin.com/company/unavailable/'
+
+# ------------------ %&%-------------------------------
 print(new_username, new_password, new_email)
+
 
 # fake.pystr(min_chars=None, max_chars=10)
 # middle_name = fake.first_name()

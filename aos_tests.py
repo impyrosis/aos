@@ -1,18 +1,18 @@
 import unittest
-import aos1_locators as locators
-import aos1_methods as methods
+import aos_locators as locators
+import aos_methods as methods
 
 
 class AosAppPositiveTestCases(unittest.TestCase):
 
     @staticmethod
-    def test_create_new_account():
+    def test_create_new_user():
         methods.setUp()
-        methods.create_new_account()
-        methods.logout()
-        methods.login()
+        methods.create_new_user()
+        methods.log_out()
+        methods.log_in()
         methods.logger('created')
-        methods.logout()
+        methods.log_out()
         methods.tearDown()
 
 

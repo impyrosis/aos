@@ -1,7 +1,7 @@
 import sys
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import WebDriver
-import aos1_locators as locators
+import aos_locators as locators
 from selenium.webdriver.chrome.service import Service
 import time
 from time import sleep
@@ -26,15 +26,16 @@ def setUp():
     driver.maximize_window()
     time.sleep(.3)
     # 3. Navigate to web page URL - https://advantageonlineshopping.com/ (Links to an external site.)
-    driver.get(locators.home_page_url)
+
+    driver.get(locators.aos_url)
     time.sleep(2)
     # 4. Check URL and home page title are as expected.
-    print(driver.current_url)
+    print(driver.current_url)  # current URL
     print(driver.title)
-    if driver.current_url == locators.home_page_url and driver.title == locators.home_page_title:
-        print(f' The URL is : {driver.current_url} and the title of the web-page is :{driver.title}')
+    if driver.current_url == locators.aos_url and driver.title == locators.aos_home_page_title:
+        print(f' The URL is : {driver.current_url} and title of webpage is :{driver.title}')
     else:
-        print(f' Something went wrong. Check the URL of the web page!')
+        print(f' Ooops something went wrong. Please check URL of page again!')
 
 
 def tearDown():
@@ -52,7 +53,7 @@ def create_new_user():
     time.sleep(2)
     driver.find_element(By.LINK_TEXT, 'CREATE NEW ACCOUNT').click()
     time.sleep(2)
-    driver.find_element(By.NAME, 'usernameRegisterPage').send_keys(locators.new_user_name)
+    driver.find_element(By.NAME, 'usernameRegisterPage').send_keys(locators.new_username)
     time.sleep(.3)
     driver.find_element(By.NAME, 'emailRegisterPage').send_keys(locators.new_email)
     time.sleep(.3)
@@ -75,7 +76,7 @@ def create_new_user():
     # time.sleep(2)
     # driver.find_element(By.NAME, 'state_/_province_/_regionRegisterPage').send_keys(locators.city)
     time.sleep(2)
-    driver.find_element(By.NAME, 'postal_codeRegisterPage').send_keys(locators.postal_code)
+    driver.find_element(By.NAME, 'postal_codeRegisterPage').send_keys(locators.postalcode)
     time.sleep(2)
     x = driver.find_element(By.NAME, 'i_agree').is_selected()
     if x == False:
@@ -86,7 +87,7 @@ def create_new_user():
     time.sleep(5)
     driver.find_element(By.ID, 'register_btnundefined').click()
     time.sleep(2)
-    print(f' the registered  username is  : "{locators.new_user_name}" and password is: "{locators.new_password}"')
+    print(f' the registered  username is  : "{locators.new_username}" and password is: "{locators.new_password}"')
     # logger('created')
 
 
@@ -103,28 +104,26 @@ def log_out():
 
 # login
 def log_in():
-    if driver.current_url == locators.home_page_url and driver.title == locators.home_page_title:
+    if driver.current_url == locators.aos_url and driver.title == locators.aos_home_page_title:
         print(f' The URL is : {driver.current_url} and the title of the web-page is :{driver.title}')
     else:
         print(f' Something went wrong. Please Check URL of the web page!')
     time.sleep(2)
     driver.find_element(By.ID, 'menuUser').click()
     time.sleep(2)
-    driver.find_element(By.NAME, 'username').send_keys(locators.new_user_name)
+    driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
     driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
     time.sleep(.3)
     driver.find_element(By.ID, 'sign_in_btnundefined').click()
     time.sleep(4)
     # CHECK-LOGIN
     x = driver.find_element(By.XPATH,
-                            f'//*[@id="menuUserLink"]/span[contains(.,"{locators.new_user_name}")]').is_displayed()
+                            f'//*[@id="menuUserLink"]/span[contains(.,"{locators.new_username}")]').is_displayed()
     print(x)
     if x == True:
         print(f' Hurray login was successful')
     else:
         print(f' Sorry problem found - help needed ')
-
-
 # logger
 def logger(action):
     # create variable to store the file content
@@ -132,13 +131,12 @@ def logger(action):
     log_file = open('message.log', 'a')  # open log file and append a record
     sys.stdout = log_file
     print(f'{locators.new_email}\t'
-          f'{locators.new_user_name}\t'
+          f'{locators.new_username}\t'
           f'{locators.new_password}\t'
           f'{datetime.datetime.now()}\t'
           f'{action}')
     sys.stdout = old_instance
     log_file.close()
-
 
 setUp()
 create_new_user()
