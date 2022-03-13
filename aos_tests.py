@@ -14,6 +14,13 @@ class AosAppPositiveTestCases(unittest.TestCase):
         methods.logger('created')
         methods.log_out()
         methods.tearDown()
+        methods.check_homepage_text()
+        methods.check_shopnow_button()
+        methods.check_main_menu()
+        methods.check_mainlogo()
+        methods.contact_us()
+        methods.check_socialmedia_link()
+        methods.tearDown()
 
 
 

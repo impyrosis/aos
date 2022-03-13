@@ -20,6 +20,24 @@ city = fake.city()
 address = fake.address().replace("\n", " ")
 province = fake.province()
 postalcode = fake.postcode()
+subject = fake.sentence(nb_words=10)
+account_first_name=first_name.capitalize()
+account_last_name=last_name.capitalize()
+account_full_name=f'{account_first_name} {account_last_name}'
+
+list_opt = ['Username', 'Email', 'Password', 'Confirm password',
+            'First Name', 'Last Name', 'Phone Number',
+            'City', 'Address', 'Province', 'PostalCode']
+list_names = ['usernameRegisterPage', 'emailRegisterPage', 'passwordRegisterPage', 'confirm_passwordRegisterPage',
+              'first_nameRegisterPage', 'last_nameRegisterPage', 'phone_numberRegisterPage',
+              'cityRegisterPage', 'addressRegisterPage', 'state_/_province_/_regionRegisterPage',
+              'postal_codeRegisterPage']
+list_val = [new_username, new_email, new_password, new_password,
+            first_name, last_name, phone,
+            city, address, province, postalcode]
+
+
+
 
 # Print list of varaiables
 
