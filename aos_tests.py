@@ -1,27 +1,22 @@
 import unittest
 import aos_locators as locators
-import aos_methods as methods
+import aos_methods as method
 
 
-class AosAppPositiveTestCases(unittest.TestCase):
+class aosAppPostiveTestCases(unittest.TestCase):
 
-    @staticmethod
-    def test_create_new_user():
-        methods.setUp()
-        methods.create_new_user()
-        methods.log_out()
-        methods.log_in()
-        methods.logger('created')
-        methods.log_out()
-        methods.tearDown()
-        methods.check_homepage_text()
-        methods.check_shopnow_button()
-        methods.check_main_menu()
-        methods.check_mainlogo()
-        methods.contact_us()
-        methods.check_socialmedia_link()
-        methods.tearDown()
-
-
-
-
+    @staticmethod  # single to units test that this is a static method
+    def test_create():
+        method.setup()
+        method.create_new_user()
+        method.logger('created')
+        method.log_out()
+        method.log_in()
+        method.homepage_texts()
+        method.top_menu()
+        method.contact_us_form()
+        # method.checkout_shopping_cart()
+        method.delete_user()
+        method.logger('deleted')
+        method.tearDown()
+        method.checkout_Shopping_Cart()
