@@ -343,12 +343,9 @@ def contact_us_form():
     print('CONTACT US Form working!')
     print('')
 
-#
-# def checkout_Shopping_Cart():
+
+# def checkout_shopping_cart():
 #     print('-----------------------------Check Out Shopping Cart----------------------------------')
-#
-#     #
-#     #
 #     sleep(2)
 #     driver.find_element(By.ID, 'headphonesTxt').click()
 #     sleep(1)
@@ -364,7 +361,8 @@ def contact_us_form():
 #     sleep(1)
 #     driver.find_element(By.ID, 'checkOutPopUp').click()
 #
-#     # data values
+#
+#     #data values
 #     total_value = driver.find_element(By.XPATH, './/span[@class="roboto-medium totalValue ng-binding"]').text
 #     name = driver.find_element(By.XPATH, '//div/label[@class="ng-binding"]').text
 #     address = driver.find_element(By.XPATH, '//*[@id="userDetails"]/div[1]/label[1]').text
@@ -421,66 +419,33 @@ def contact_us_form():
 #     sleep(1)
 #     print('')
 
-
-# def delete_user():
-#     driver.find_element(By.LINK_TEXT, locators.new_username).click()
-#     sleep(1)
-#     driver.find_element(By.XPATH, '//a/div/label[contains(.,"My orders")]').click()
-#     sleep(0.25)
-#     assert driver.find_element(By.XPATH, '//div/label[contains(.,"No orders")]').is_displayed()
-#     sleep(0.25)
-#     print(f'No Orders Displayed ')
-#     driver.find_element(By.LINK_TEXT, locators.new_username).click()
-#     sleep(0.25)
-#     driver.find_element(By.XPATH, '//a/div/label[contains(.,"My account")]').click()
-#     assert driver.find_element(By.XPATH, f'//*[contains(.,"{locators.new_username}")]').is_displayed()
-#     print(f' ')
-#     driver.find_element(By.CLASS_NAME, 'deleteBtnText').click()
-#     sleep(2)
-#     driver.find_element(By.XPATH, '//div[@class="deletePopupBtn deleteRed"]').click()
-#     print(f'Account has been deleted.')
-#     sleep(3)
-#     driver.find_element(By.ID, 'menuUser').click()
-#     sleep(1)
-#     driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
-#     driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
-#     sleep(0.25)
-#     driver.find_element(By.ID, 'sign_in_btnundefined').click()
-#     sleep(2)
-#     driver.find_element(By.ID, 'signInResultMessage').is_displayed()
-#     print(f'Incorrect user name or password.')
-#
-#
-# def checkout_Shopping_Cart():
-#     driver.find_element(By.ID, 'details_21').click()
-#     sleep(1)
-#     driver.find_element(By.NAME, 'save_to_cart').click()
-#     sleep(1)
-#     driver.find_element(By.ID, 'checkOutPopUp').click()
-#     sleep(1)
-#     assert driver.find_element(By.XPATH,
-#                                f'.//div[@id="userDetails"]/div/label[contains(.,{locators.new_username})]').is_displayed(), 'ERROR: Username NOT DISPLAYED at ORDER PAYMENT PAGE'
-#     print('USername dispalyed at order payment page')
-#     sleep(1)
-#     driver.find_element(By.ID, 'next_btn').click()
-#     sleep(3)
-#     driver.find_element(By.NAME, 'safepay_username').send_keys('spuser')
-#     sleep(3)
-#     driver.find_element(By.NAME, 'safepay_password').send_keys('Pass123')
-#     sleep(1)
-#     driver.find_element(By.ID, 'pay_now_btn_SAFEPAY').click()
-#     sleep(2)
-#     assert driver.find_element(By.XPATH,
-#                                './/span[contains(.,"Thank you for buying")]').is_displayed(), 'Error: Thank you message not displayed'
-#     print('Thank you message displayed')
-#     sleep(2)
-#     print(f'Tracking Number: {driver.find_element(By.ID, "trackingNumberLabel").text}')
-#     sleep(2)
-#     print(f'Order Number: {driver.find_element(By.ID, "orderNumberLabel").text}')
-#     sleep(2)
-#     assert driver.find_element(By.XPATH,
-#                                f'//div[@class="innerSeccion"]/label[contains(.,{locators.new_username})]').is_displayed(), 'ERROR: Username NOT DISPLAYED at Thankyou PAGE'
-#     print('USername dispalyed at Thank you page')
+def delete_user():
+    driver.find_element(By.LINK_TEXT, locators.new_username).click()
+    sleep(1)
+    driver.find_element(By.XPATH, '//a/div/label[contains(.,"My orders")]').click()
+    sleep(0.25)
+    assert driver.find_element(By.XPATH, '//div/label[contains(.,"No orders")]').is_displayed()
+    sleep(0.25)
+    print(f'No Orders Displayed ')
+    driver.find_element(By.LINK_TEXT, locators.new_username).click()
+    sleep(0.25)
+    driver.find_element(By.XPATH, '//a/div/label[contains(.,"My account")]').click()
+    assert driver.find_element(By.XPATH, f'//*[contains(.,"{locators.new_username}")]').is_displayed()
+    print(f' ')
+    driver.find_element(By.CLASS_NAME, 'deleteBtnText').click()
+    sleep(2)
+    driver.find_element(By.XPATH, '//div[@class="deletePopupBtn deleteRed"]').click()
+    print(f'Account has been deleted.')
+    sleep(3)
+    driver.find_element(By.ID, 'menuUser').click()
+    sleep(1)
+    driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
+    driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
+    sleep(0.25)
+    driver.find_element(By.ID, 'sign_in_btnundefined').click()
+    sleep(2)
+    driver.find_element(By.ID, 'signInResultMessage').is_displayed()
+    print(f'Incorrect user name or password.')
 
 
 setup()
@@ -490,7 +455,7 @@ log_in()
 homepage_texts()
 top_menu()
 contact_us_form()
-# checkout_Shopping_Cart()
-# delete_user()
+# checkout_shopping_cart()
+delete_user()
 logger('created')
 tearDown()
