@@ -420,6 +420,7 @@ def contact_us_form():
 #     print('')
 
 def delete_user():
+
     driver.find_element(By.LINK_TEXT, locators.new_username).click()
     sleep(1)
     driver.find_element(By.XPATH, '//a/div/label[contains(.,"My orders")]').click()
@@ -448,6 +449,38 @@ def delete_user():
     print(f'Incorrect user name or password.')
 
 
+def checkout_Shopping_Cart():
+    driver.find_element(By.ID, 'details_21').click()
+    sleep(1)
+    driver.find_element(By.NAME, 'save_to_cart').click()
+    sleep(1)
+    driver.find_element(By.ID, 'checkOutPopUp').click()
+    sleep(1)
+    assert driver.find_element(By.XPATH,
+                               f'.//div[@id="userDetails"]/div/label[contains(.,{locators.new_username})]').is_displayed(), 'ERROR: Username NOT DISPLAYED at ORDER PAYMENT PAGE'
+    print('USername dispalyed at order payment page')
+    sleep(1)
+    driver.find_element(By.ID, 'next_btn').click()
+    sleep(3)
+    driver.find_element(By.NAME, 'safepay_username').send_keys('spuser')
+    sleep(3)
+    driver.find_element(By.NAME, 'safepay_password').send_keys('Pass123')
+    sleep(1)
+    driver.find_element(By.ID, 'pay_now_btn_SAFEPAY').click()
+    sleep(2)
+    assert driver.find_element(By.XPATH,
+                               './/span[contains(.,"Thank you for buying")]').is_displayed(), 'Error: Thank you message not displayed'
+    print('Thank you message displayed')
+    sleep(2)
+    print(f'Tracking Number: {driver.find_element(By.ID, "trackingNumberLabel").text}')
+    sleep(2)
+    print(f'Order Number: {driver.find_element(By.ID, "orderNumberLabel").text}')
+    sleep(2)
+    assert driver.find_element(By.XPATH,
+                               f'//div[@class="innerSeccion"]/label[contains(.,{locators.new_username})]').is_displayed(), 'ERROR: Username NOT DISPLAYED at Thankyou PAGE'
+    print('USername dispalyed at Thank you page')
+
+
 setup()
 create_new_user()
 log_out()
@@ -455,7 +488,7 @@ log_in()
 homepage_texts()
 top_menu()
 contact_us_form()
-# checkout_shopping_cart()
+checkout_Shopping_Cart()
 delete_user()
 logger('created')
 tearDown()
